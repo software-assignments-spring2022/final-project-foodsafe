@@ -1,19 +1,9 @@
-# Project Repository
-
-This repository will be used for team projects.
-
-Several sets of instructions are included in this repository. They should each be treated as separate assignments with their own due dates and sets of requirements.
-
-1. See the [App Map & Wireframes](instructions-0a-app-map-wireframes.md) and [Prototyping](./instructions-0b-prototyping.md) instructions for the requirements of the initial user experience design of the app.
-
-1. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./instructions-0c-project-setup.md)
-
-1. See the [Sprint Planning instructions](instructions-0d-sprint-planning.md) for the requirements of Sprint Planning for each Sprint.
-
-1. See the [Front-End Development instructions](./instructions-1-front-end.md) for the requirements of the initial Front-End Development.
-
-1. See the [Back-End Development instructions](./instructions-2-back-end.md) for the requirements of the initial Back-End Development.
-
-1. See the [Database Integration instructions](./instructions-3-database.md) for the requirements of integrating a database into the back-end.
-
-1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
+# FoodSafe
+## What and Why?
+FoodSafe is a software app that will allow its user to select which allergies they may have, such as: milk, eggs, peanuts, soy, wheat, tree nuts, fish, shellfish, sesame, etc. Then the user will be able to search for a food product and the app will then suggest food products that are allergy free and safe for the user to eat. The team is aiming for the app to initially ask users what they are allergic to, then to be directed to a page where users can search for food products that are allergy free and the software will suggest them. Later on, our goals are to add more allergies than just the common ones, and allow the user to enter a full grocery list that the app will be able to process. This software will help those with allergies that struggle to find foods they can eat and spend hours in grocery stores looking at the ingredients on the back of products.
+## How FoodSafe Became an Idea
+This project started because I have many allergies and often struggle with finding food products that I can safely eat. I am constantly reading tshe ingredients on the back of food products which makes grocery shopping a long and tedious process. Recognizing that I am not the only one that struggles with this, we decided to create an app that will allow users with food allergies to search for food products with ease.
+## Building and Testing
+TBD
+## How to Contrbute
+If you would like to contribute by correcting any bugs or adding new features, feel free to do so by following [these instructions](./CONTRIBUTING.md).
