@@ -1,6 +1,40 @@
 # Guide to Contributing
 ## Team Norms
-Please read and abide by our [team norms] (./teamnorms.md) before making any contributions.
+<!-- Links -->
+Please read and abide by our [team norms] [teamnorms.md](https://github.com/software-assignments-spring2022/final-project-foodsafe/blob/master/teamnorms.md) before making any contributions.
+## The Git workflow that the team follows
+
+<!-- Strong -->
+**-CenTralized Workflow** 
+
+## A detailed description of the rules of contributing and any considerations or how and what to contribute
+ We would love to hear your thoughts on this project, whether you want to report a bug, add some new ideas, or a discussion about the overall project, Foodsafe welcomes you with open arms. However, before You go ahead and start contributing,  here are few  rules and guidelines that all contributors must follow. 
+ # Github
+ ### We use github to track and update the changes made in food-safe Repository. 
+## Below are simple rules that contributors must follow: 
+<!-- UL -->
+- Clone the Repository to your local machine.
+- Make sure that You pull latest version of the github Repository before making any changes. 
+- We highly recommend that You do not work independently in separate branches for a long period of time.
+- Make sure your code runs and does what is supposed to do
+- Issue that pull request!
+
+## Some Crucial git commands: 
+
+```console 
+#clone a remote repository onto the local machine
+git git clone https://github.com/your-github-handle/your-repository-name.git
+
+ # create a new branch
+git branch experiment1
+
+# switch to the new branch
+git checkout experiment1
+
+# switch back to the main branch
+git checkout main
+```
+
 ## Coding Standards
 The same coding standards listen in our [team norms] (./teamnorms.md)
 * All team members are expected to use *Visual Studio Code* and *Prettier*, the code formatter, which is an extension on visual studio code that can be downloaded
@@ -38,4 +72,33 @@ This section will guide you through submitting an enhancement suggestion for Foo
 * Describe the current feature and why/how you think your feature would be beneficial
 * Explain why this feature would be beneficial to the majority of FoodSafe users
 
+## Instructions for setting up the local development environment in order to work on this project
 
+### Github Account 
+<!-- Links -->
+- [Create a github account](https://github.com/join)
+ or login if you already have an account. 
+ 
+ ### Visual Studio Code
+ <!-- UL --> 
+ <!-- Links -->
+ - [Download VS code on your device](https://code.visualstudio.com/download) or open VS code if you it's already downloaded. 
+
+ ### Instructions: 
+ Once VS code is open, On the top bar: 
+ <!-- UL -->
+ - Go to view. 
+ - then  go to command palette. 
+ - Inside command palette type in git clone. 
+ - select the drop down option "git clone". 
+ - on the prompt menu copy and paste the link below 
+ <!-- Links -->
+ - [ Food-safe Main Repo](https://github.com/software-assignments-spring2022/final-project-foodsafe
+)
+-  Voila You are ready to start contributing to food-safe. 
+
+## Instructions for building and testing the project:
+## TBD
+
+#### Side Node:
+Thank you in advance for any contribution that You may make in this project, We are truly grateful - Food-safe Team. 

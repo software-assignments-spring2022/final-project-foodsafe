@@ -1,5 +1,17 @@
 # Team Norms
-## Team Values
+## Team Values: 
+<!-- UL -->
+- Treat each other with respect and dignity. 
+- Be Genuine with each other about Ideas, Challenges, and feelings. 
+- Problems are presented in a way that promotes mutual discussion and resolution.
+- Practice and experience humility - each of the team members may not have have all the answers. 
+- Practice being open minded.
+- Have confidence that the issues discussed will be kept in confidence.
+- Do not be affraid to respectfully challenge one another by asking Questions, but refrain from personal attacks. Focus on ideas instead.
+- Actively Communicate with the team and respond relevant communication with 3 days
+- If a team member is unable to complete their assigned task and responsabilities, it is their responsability that they alert the Scrum Master and assure that another Developer can assist Them. 
+- Scrum Master Proactively  fairly  allocate the  work among team members to reduce burnout and promote balance. 
+
 ## Any Conflict Issues
 * If there are disagreements within the team: all team members will meet and discuss their thoughts. Once everyone has been able to discuss their thoughts and ideas, a vote will be taken on how the disagreement will be resolved. The Scrum Master will record which side won, while also taking into consideration the minority sides viewpoints. In the event of no majority vote, the Scrum Master and Product Owner will take into consideration everyone's viewpoints and develop a solution.
 * If a team member is not adhering to team norms or completing their duties to the team: Other team members should notify the Scrum Master of the current situation. The Scrum Master should then meet with the individual to discuss their expectations of the individual and whether there are any issues blocking their progress. If this becomes a recurring issue with any individual, the Scrum Master may reach out to see if outside intervention is required.
