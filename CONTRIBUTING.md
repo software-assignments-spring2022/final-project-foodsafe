@@ -82,7 +82,7 @@ This section will guide you through submitting an enhancement suggestion for Foo
  ### Visual Studio Code
  <!-- UL --> 
  <!-- Links -->
- - [Download VS code on your device](https://code.visualstudio.com/download) or open VS code if you it's already downloaded. 
+ - [Download VS code on your device](https://code.visualstudio.com/download) or open VS code if  it's already downloaded. 
 
  ### Instructions: 
  Once VS code is open, On the top bar: 
