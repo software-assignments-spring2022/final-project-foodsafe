@@ -1,7 +1,7 @@
 # Guide to Contributing
 ## Team Norms
 <!-- Links -->
-Please read and abide by our [team norms] [teamnorms.md](https://github.com/software-assignments-spring2022/final-project-foodsafe/blob/master/teamnorms.md) before making any contributions.
+Please read and abide by our [teamnorms.md](https://github.com/software-assignments-spring2022/final-project-foodsafe/blob/master/teamnorms.md) before making any contributions.
 ## The Git workflow that the team follows
 
 <!-- Strong -->
