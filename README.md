@@ -14,9 +14,8 @@ This project started because I have many allergies and often struggle with findi
 
 
 ## How to Contrbute
-If you would like to contribute by correcting any bugs or adding new features, feel free to do so by following [these instructions]
-<!-- Links -->
-[Contributing.md](https://github.com/software-assignments-spring2022/final-project-foodsafe/blob/master/CONTRIBUTING.md)
+If you would like to contribute by correcting any bugs or adding new features, feel free to do so by following [these instrustions](https://github.com/software-assignments-spring2022/final-project-foodsafe/blob/master/CONTRIBUTING.md)
+
 
 ## Building and Testing
 TBD
