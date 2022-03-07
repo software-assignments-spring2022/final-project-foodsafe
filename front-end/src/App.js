@@ -7,13 +7,15 @@ import Home_sign_up from './sign_up/main.js';
 import Home_set_acc from './set_acc/main.js';
 import Home_search_rec from './search_rec/main.js';
 import Home_groc_list from './groc_list/main.js';
+import Header from './Header.js'
 
 
 
 function App() {
   return (
     <a>
-      <h1>Food Safe, these are our page!</h1>
+      <Header/>
+      <h1>Food Safe, these are our page! (for developing use)</h1>
       <ul>
         <li><a href="/sign_in">1 sign in page</a></li>
         <li><a href="/sign_up">2 sign up page</a></li>
