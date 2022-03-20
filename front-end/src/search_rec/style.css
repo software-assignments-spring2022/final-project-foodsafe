@@ -38,3 +38,7 @@
     display: block;
     width: 100%;
 }
+.picture-captions {
+    display: inline-block;
+    width: 100%;
+}
