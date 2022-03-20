@@ -1,11 +1,13 @@
 import React from 'react';
-
+import './style.css';
+import Header from './header.js';
+import search_bar from './search_bar.js';
 const search_rec=()=>{
     return (
-    <a>
-        <h2>Search + recommend categories (home)- Neil (to be done)!</h2>
-    </a>
-    
+    <div className='container'
+        <Header name="Search Page"/>
+        <search_bar/>
+    </div>   
     );
 }
 export default search_rec;
