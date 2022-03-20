@@ -1,17 +1,4 @@
-import React from 'react';
-<<<<<<< HEAD
-
-const search_rec=()=>{
-    
-        return (
-            <a>
-                <h2>Sign up page -  Neil</h2>
-            </a>
-            
-            );
-
-=======
-import '.\style.css;
+import '.\style.css';
 import Header from '.\header.js';
 import search_bar from '.\search_bar.js';
 import recommended_pictures from '.\recommended_pictures.js';
@@ -30,6 +17,6 @@ const search_rec=()=>{
         </div>
     </div>   
     );
->>>>>>> c6b6ea232fdaee7c8c061ca2a05b2d31b178b4ef
+
 }
 export default search_rec;

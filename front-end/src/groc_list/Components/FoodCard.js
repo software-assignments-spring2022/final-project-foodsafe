@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import "./ProductCard.css";
+import "./FoodCard.css";
 import formatCurrency from "format-currency";
 import CartContext from '../context/cart/CartContext'; 
-const ProductCard = ({product}) => {
+const FoodCard = ({product}) => {
     const { addToCart } = useContext(CartContext);
     let  opts = {format: '%s%v', symbol: '$'}
   return (
@@ -22,4 +22,4 @@ const ProductCard = ({product}) => {
   )
 }
 
-export default ProductCard
+export default FoodCard
