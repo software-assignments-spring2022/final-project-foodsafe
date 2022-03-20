@@ -1,13 +1,13 @@
 import React from 'react';
-import './style.css';
-import Header from './header.js';
-import search_bar from './search_bar.js';
+
 const search_rec=()=>{
-    return (
-    <div className='container'
-        <Header name="Search Page"/>
-        <search_bar/>
-    </div>   
-    );
+    
+        return (
+            <a>
+                <h2>Sign up page -  Neil</h2>
+            </a>
+            
+            );
+
 }
 export default search_rec;

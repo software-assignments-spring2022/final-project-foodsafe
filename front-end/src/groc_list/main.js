@@ -1,11 +1,21 @@
-import React from 'react';
+import HomeScreen from "./screens/HomeScreen";
+import Cart from "./Components/Cart";
+import Nav from "./Components/Nav";
+import CartState  from './context/cart/CartState'; 
 
-const groc_list=()=>{
-    return (
-    <a>
-        <h2>Grocery list page- Telly Jalloh (to be done)!</h2>
-    </a>
+const groc_list= () =>{
     
+    return (
+    <div className='Shopping cart'>
+       <CartState>
+       <Nav />
+        <Cart />
+        <HomeScreen />    
+       </CartState>
+         
+       
+    </div>
+       
     );
 }
 export default groc_list;
