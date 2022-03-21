@@ -4,7 +4,7 @@
     margin-top: 10px;
   }
   
-  li {
+  .li {
     list-style-type: none;
     height: 100px;
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
   }
   
-  li img {
+  .li img {
     height: 100%;
     width: 100px;
     object-fit: cover;
