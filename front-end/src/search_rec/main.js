@@ -8,14 +8,6 @@ import candies from './candies.jpg';
 import cereals from './cereals.png';
 import frozen_foods from './frozen-foods.jpg';
 
-import '.\style.css';
-import Header from '.\header.js';
-import Search_bar from '.\search_bar.js';
-import Recommended_pictures from '.\recommended_pictures.js';
-import candies from '.\candies.jpg';
-import cereals from '.\cereals.png';
-import frozen_foods from '.\frozen-foods.jpg';
-
 const search_rec=()=>{
     return (
     <div className='container'>
