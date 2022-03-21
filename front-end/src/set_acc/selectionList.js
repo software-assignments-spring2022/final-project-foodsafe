@@ -7,6 +7,7 @@ import { pink } from '@mui/material/colors';
 import D_icon from '@mui/icons-material/Delete';
 import A_icon from '@mui/icons-material/Add';
 
+// these helper function is from MD transfer list
 
 function not(a, b) {
   return a.filter((value) => b.indexOf(value) === -1);
