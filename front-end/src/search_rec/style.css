@@ -1,5 +1,5 @@
 .container {
-    max-width: 500px;
+    max-width: 800px;
     margin: 30px auto;
     overflow: auto;
     min-height: 300px;
@@ -39,6 +39,7 @@
     width: 100%;
 }
 .picture-captions {
+    margin: auto;
     display: inline-block;
     width: 100%;
 }
