@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home_all_sel from './all_sel/main.js';
@@ -30,7 +31,7 @@ function App() {
           <Route path="/sign_up" element={<Home_sign_up />} />
           <Route path="/all_sel" element={<Home_all_sel />} />
           <Route path="/search_rec" element={<Home_search_rec />} />
-          <Route path="/groc_list" element={<Home_groc_list />} />
+          <Route  path="/groc_list" element={<Home_groc_list />} />
           <Route path="/set_acc" element={<Home_set_acc />} />
         </Routes>
     </Router>

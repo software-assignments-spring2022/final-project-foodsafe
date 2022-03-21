@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import './style.css';
 import Header from './header.js';
@@ -6,6 +7,15 @@ import Recommended_pictures from './recommended_pictures.js';
 import candies from './candies.jpg';
 import cereals from './cereals.png';
 import frozen_foods from './frozen-foods.jpg';
+=======
+import '.\style.css';
+import Header from '.\header.js';
+import search_bar from '.\search_bar.js';
+import recommended_pictures from '.\recommended_pictures.js';
+import candies from '.\candies.jpg';
+import cereals from '.\cereals.png';
+import frozen_foods from '.\frozen-foods.jpg';
+>>>>>>> 6da64d30a5f5d97872e1abe17cca9a69f999e55b
 const search_rec=()=>{
     return (
     <div className='container'>
@@ -18,5 +28,6 @@ const search_rec=()=>{
         </div>
     </div>   
     );
+
 }
 export default search_rec;
