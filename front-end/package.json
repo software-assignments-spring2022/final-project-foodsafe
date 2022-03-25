@@ -49,5 +49,9 @@
   },
   "devDependencies": {
     "faker": "^6.6.6"
-  }
+  },
+  "description": "The setUp",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -64,7 +64,7 @@ export default function TransferList() {
   };
 
   return (
-    <Grid container spacing={2} justifyContent="center" alignItems="center">
+    <Grid container spacing={2} justifyContent="center" alignItems="center" sx={{elevation:300}}>
       <Grid item>
         <ItemList
           title='Allergies left you could selected'
@@ -80,7 +80,6 @@ export default function TransferList() {
           <Button
             sx={{ 
               my: 0.5,
-           
               borderRadius:2,
               height:50,
               width: 105,
