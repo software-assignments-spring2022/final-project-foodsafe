@@ -41,13 +41,13 @@ handleCheckboxChange = changeEvent => {
 };
 
 handleFormSubmit = formSubmitEvent => {
-    formSubmitEvent.preventDefault();
-    
+    /*formSubmitEvent.preventDefault();
     Object.keys(this.state.checkboxes)
     .filter(checkbox => this.state.checkboxes[checkbox])
     .forEach(checkbox => {
         console.log(checkbox, "is selected.");
     });
+    this.props.history.push('/');*/
 };
 
 createCheckbox = option => (
@@ -66,7 +66,7 @@ render() {
         <div className="container">
             <div className="row mt-5">
                 <div className="col-sm-12">
-                    <form onSubmit={this.handleFormSubmit}>
+                    <form onSubmit={this.handleFormSubmit} action="/groc_list">
                         {this.createCheckboxes()}
 
                         <div className="form-group mt-2">
@@ -84,9 +84,11 @@ render() {
                             >
                                 Deselect All
                             </button>
-                            <button type="submit" className="btn btn-primary">
+                            <a href='/groc_list'>
+                            <button  component="a" href="/sign_in" className="btn btn-primary">
                                 Continue
                             </button>
+                            </a>
                         </div>
                     </form>
                 </div>

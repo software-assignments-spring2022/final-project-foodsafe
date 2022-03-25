@@ -22,6 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/sign_in" element={<Home_sign_in />} />
+          <Route path="" element={<Home_all_sel/>} />
           <Route path="/sign_up" element={<Home_sign_up />} />
           <Route path="/all_sel" element={<Home_all_sel />} />
           <Route path="/search_rec" element={<Home_search_rec />} />
