@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Checkbox from "./Checkbox";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const OPTIONS = ["Dairy", "Eggs", "Tree Nuts", "Peanuts", "Shellfish", "Wheat", "Soy", "Fish"];
+const OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
 
 class allergy extends Component {
     state = {
@@ -40,14 +42,16 @@ handleCheckboxChange = changeEvent => {
     }));
 };
 
-handleFormSubmit = formSubmitEvent => {
-    /*formSubmitEvent.preventDefault();
-    Object.keys(this.state.checkboxes)
-    .filter(checkbox => this.state.checkboxes[checkbox])
-    .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
+handleFormSubmit = async formSubmitEvent => {
+    const selectedAllergy=[]
+   Object.entries(this.state.checkboxes).forEach((Allergy,index)=>{
+       if(Allergy[1])
+            selectedAllergy.push(index);
+   })
+
+   await Axios.post("http://localhost:5000/allergy",{
+      newAllergies:selectedAllergy
     });
-    this.props.history.push('/');*/
 };
 
 createCheckbox = option => (
@@ -66,7 +70,6 @@ render() {
         <div className="container">
             <div className="row mt-5">
                 <div className="col-sm-12">
-                    <form onSubmit={this.handleFormSubmit} action="/groc_list">
                         {this.createCheckboxes()}
 
                         <div className="form-group mt-2">
@@ -84,13 +87,14 @@ render() {
                             >
                                 Deselect All
                             </button>
-                            <a href='/groc_list'>
-                            <button  component="a" href="/sign_in" className="btn btn-primary">
+                            <a href="/groc_list">
+                            <button   className="btn btn-primary" onClick={this.handleFormSubmit}>
                                 Continue
                             </button>
                             </a>
+                            
+              
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
