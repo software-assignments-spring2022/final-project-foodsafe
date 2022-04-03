@@ -9,7 +9,7 @@ import { pink } from '@mui/material/colors';
 import Item from './Item.js' 
 
 const list = ({title, items,selectAll,numberOfChecked,handleToggle,checked}) => (
-    <Card elevation={2}>
+    <Card elevation={10}>
       <CardHeader
         sx={{ px: 4, py: 1 ,borderColor: '#2a5d45'}}
         avatar={
