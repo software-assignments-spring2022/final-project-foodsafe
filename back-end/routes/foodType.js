@@ -3,7 +3,7 @@ var router = express.Router();
 
 let foods=['foo','bar']
 let searchQuery;
-router.post('/',(req,res)=>{
+router.get('/',(req,res)=>{
     res.json(foods);
 })
 

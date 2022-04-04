@@ -31,7 +31,6 @@ export default function Search_bar() {
 	const submitSearch= async()=>{
 			if((myFood.data.indexOf(query))>=0){
 				navigate("/groc_list");
-				Axios.post('http://localhost:4000/food',{"searchQuery":query});
 			}else{
 				setQuery("not found")
 			}
@@ -55,4 +54,4 @@ export default function Search_bar() {
 
 	
 }
-}
+
