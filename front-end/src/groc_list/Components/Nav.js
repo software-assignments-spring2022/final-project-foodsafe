@@ -9,7 +9,6 @@ const Nav = (props) => {
   const { cartItems, showHideCart } = useContext(CartContext);
   return (
     <nav>
-    <div className='nav__left'>Grocery </div>
     <div className='nav__right'>
       <div className='cart__icon'>
         <i

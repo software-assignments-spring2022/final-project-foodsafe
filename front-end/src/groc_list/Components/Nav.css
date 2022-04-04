@@ -1,18 +1,15 @@
 nav {
-    color: white;
+    color:black;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50px;
-    background-color: #1d1f27;
-    padding: 0 20px;
+    background-color: white;
+    padding: 0 10px;
     left: 0;
     right: 0;
   }
   
-  .nav__left {
-    flex: 1;
-  }
   
   .nav__right {
     flex: 1;
