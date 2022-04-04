@@ -47,14 +47,14 @@ export default function TransferList() {
   };
 
   async function getNew() {
-    const body=await Axios.get("http://localhost:5000/allergy");
+    const body=await Axios.get("http://localhost:4000/allergy");
     console.log(body.data);
     setRight(body.data);
     setLeft(not(all,body.data));
   }
 
   async function setNew(){
-    Axios.post("http://localhost:5000/allergy",{
+    Axios.post("http://localhost:4000/allergy",{
       newAllergies:right
     })
   }
