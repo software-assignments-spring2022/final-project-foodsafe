@@ -49,7 +49,7 @@ handleFormSubmit = async formSubmitEvent => {
             selectedAllergy.push(index);
    })
 
-   await Axios.post("http://localhost:5000/allergy",{
+   await Axios.post("http://localhost:4000/allergy",{
       newAllergies:selectedAllergy
     });
 };
