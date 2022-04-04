@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios"
 import {BrowserRouter as Router, Routes,useNavigate} from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
+import Axios from "axios";
 
 
 export default function Search_bar() {
 	const navigate = useNavigate ();
-
+	let myFood;
+	
 	const [query, setQuery] = useState("");
-	const [foodType, setFoodType] = useState(["milk", "candy", "cake", "cookie", "cereal"]);
-
+	const [foodType, setFoodType] = (["milk", "candy", "cake", "cookie", "cereal"]);
+	(async ()=>{
+		myFood=await Axios.get('http://localhost:4000/food');
+	})();
 	// useEffect(() => {
 	// 	const fetchFoodType = async () => {
 	// 		const res = await axios.get('http://localhost:3500/foodtype');
@@ -25,31 +28,14 @@ export default function Search_bar() {
 	/*
 		fetch data from backend, if query is present in the data, then redirect to product page
 	*/
-	function submitSearch (event){
-		
-		axios.get('http://localhost:3500/foodtype')
-			.then( (response) => {
-				navigate ("/groc_list")//if query is in response(result) then navigate torecommended page
-				// console.log(query);
-				// console.log(response.data);
-				// setFoodType(response.data);
-				
-				// console.log(foodType);
-
-				// if(foodType.includes(query)){
-				// 	console.log("hit");
-				// }
-				
-			})
-			.catch((error) =>{
-				console.log(error);
-			})
-		
-			
+	const submitSearch= async()=>{
+			if((myFood.data.indexOf(query))>=0){
+				navigate("/groc_list");
+				Axios.post('http://localhost:4000/food',{"searchQuery":query});
+			}else{
+				setQuery("not found")
+			}
 	}
-
-	
-	//() => navigate ("/groc_list")
 	
 	return (
 		<form className='serach_form'>
@@ -58,7 +44,7 @@ export default function Search_bar() {
 				<input type='text' placeholder='Enter Product Type' onChange = {handleSearch}/>
 				
 				
-				<button className = "searchIcon" onClick ={submitSearch }>  
+				<button  onClick ={submitSearch} >  
 					<SearchIcon/>
 				</button>
 				
@@ -68,4 +54,5 @@ export default function Search_bar() {
 	)
 
 	
+}
 }
