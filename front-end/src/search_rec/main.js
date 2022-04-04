@@ -2,7 +2,6 @@
 import React from 'react';
 import './style.css';
 import Header from './header.js';
-import Search_bar from './search_bar.js';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import Paper from "@mui/material/Paper"
@@ -18,9 +17,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 const search_rec=()=>{
     return (
     <div className='container'>
-        <Header name="Search Page" />
-        <Search_bar />
-
+        <Header name="" />
         <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
         <Grid item xs={4}>
             <Typography variant = "h4" >
