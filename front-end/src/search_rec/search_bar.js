@@ -13,14 +13,7 @@ export default function Search_bar() {
 	(async ()=>{
 		myFood=await Axios.get('http://localhost:4000/food');
 	})();
-	// useEffect(() => {
-	// 	const fetchFoodType = async () => {
-	// 		const res = await axios.get('http://localhost:3500/foodtype');
-	// 		setFoodType(res.data);
-	// 	};
-	// 	fetchFoodType();
-	// })
-
+	
 	function handleSearch (event){
 		const newQuery = event.target.value;
 		setQuery(newQuery);
