@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 import Paper from "@mui/material/Paper"
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
+
 {/* <div className='pictures_captions'>
             <Recommended_pictures name='candies' image={candies} />
             <Recommended_pictures name='cereals' image={cereals} />
@@ -18,7 +19,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 const search_rec=()=>{
     return (
     <div className='container'>
-        <Header name="Search Page" />
+        <Header name="Recommended Types" />
         <Search_bar />
 
         <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
