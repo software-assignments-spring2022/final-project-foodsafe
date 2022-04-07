@@ -65,7 +65,7 @@ export default function TemporaryDrawer() {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary={"sign_in"}/>
+            <ListItemText primary={"Sign In"}/>
         </ListItem>
     </List>
     </Box>
