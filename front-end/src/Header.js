@@ -15,14 +15,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import InputAdornment from '@mui/material/InputAdornment';
 import Drawd from "./drawer.js"
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import CircularProgress from '@mui/material/CircularProgress';
+import Paper from '@mui/material/Paper';
+import Axios from "axios";
+import {useEffect, useState} from "react";
+import {BrowserRouter as Router, Routes,useNavigate} from 'react-router-dom'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -64,7 +65,47 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
 export default function PrimarySearchAppBar() {
+  
+  const [open, setOpen] = React.useState(false);
+  const [options, setOptions] = React.useState([]);
+  const loading = open && options.length === 0;
+	const [query, setQuery] = useState("");
+  function handleSearch (event){
+		const newQuery = event.target.value;
+		setQuery(newQuery);
+	}
+  	const submitSearch= async()=>{
+      
+	}
+	
+  React.useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      const data=await Axios.get("http://localhost:4000/food");
+      
+      if (active) {
+        setOptions([...data.data]);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
+
+  React.useEffect(() => {
+    if (!open) {
+      setOptions([]);
+    }
+  }, [open]);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -175,17 +216,62 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Food Safe
+            Food Safe{"   ."}
           </Typography>
-          <Search>
-            <SearchIconWrapper>
+
+<Paper sx={{display: 'flex', width:"270px"}}> 
+    <a href="/groc_list" >
+    <IconButton aria-label="search" size="large" onClick ={submitSearch} >
+        <SearchIcon fontSize="inherit" />
+      </IconButton>
+    </a>
+          <Autocomplete
+          
+            id="asynchronous-demo"
+            sx={{ width: 229 }}
+            open={open}
+            freeSolo={true}
+            onOpen={() => {
+              setOpen(true);
+            }}
+            onClose={() => {
+              setOpen(false);
+            }}
+            isOptionEqualToValue={(option, value) => option === value}
+            getOptionLabel={(option) => option}
+            options={options}
+            loading={loading}
+            renderInput={(params) => (
+              
+              <TextField
+                sx={{padding:"10px"}}
+                style={{color:'white'}}
+                {...params}
+                placeholder="Search"
+                variant="standard"
+                onChange = {handleSearch}
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <React.Fragment>
+                      {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                      {params.InputProps.endAdornment}
+                    </React.Fragment>
+                  ),
+                }}
+              >
+            <InputAdornment position="start">
               <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+            </InputAdornment>
+
+            </TextField>
+            
+            )}
+          />
+
+          </Paper>
+          
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">

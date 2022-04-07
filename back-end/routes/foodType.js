@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let foods=['foo','bar']
+let foods=['candy','nut','butter','coke','beef','lobster','milk']
 let searchQuery;
 router.get('/',(req,res)=>{
     res.json(foods);
