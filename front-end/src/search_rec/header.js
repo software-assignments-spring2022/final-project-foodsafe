@@ -3,7 +3,7 @@ const Header = ({name})=>{
 	return (
 		<header className='header'>
 			<h1>{name}</h1>
-			<Change_allergy_button />
+			
 		</header>
 	);
 }
