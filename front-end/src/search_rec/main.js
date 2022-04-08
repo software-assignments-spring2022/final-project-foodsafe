@@ -1,12 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import Header from './header.js';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import Paper from "@mui/material/Paper"
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-
+import {BrowserRouter, Routes, Route,useNavigate} from "react-router-dom";
+import Change_allergy_button from './change_allergy_button';
+import {Button} from "react-bootstrap";
+import Axios from 'axios';
 {/* <div className='pictures_captions'>
             <Recommended_pictures name='candies' image={candies} />
             <Recommended_pictures name='cereals' image={cereals} />
@@ -14,22 +16,39 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
     </div> */}
 
 
-const search_rec=()=>{
+
+const Search_rec=()=>{
+    const[data, setData] = useState("");
+
+    let navigate = useNavigate ();
     return (
+        
     <div className='container'>
-        <Header name="" />
+        <Button onClick = { () => {navigate("/set_acc")}} className = "change_allergy_button"> Change Allergy </Button>
+        <Header name="Recommended Food Type" />
         <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
+            
         <Grid item xs={4}>
+            
             <Typography variant = "h4" >
                     Cake
             </Typography>
             <Paper elevation = {3} >
+
                 <img 
                     src = "https://assets.bonappetit.com/photos/59c924dc32e4b84f5a9e437a/1:1/w_2240,c_limit/1017%20WEB%20WEEK1060.jpg"
                     className = "food"
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/cake`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+            )
+            }} className = "view"> View</Button>
+            
         </Grid>
 
         <Grid item xs={4}>
@@ -44,6 +63,16 @@ const search_rec=()=>{
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/candy`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+            )
+            }} className = "view"> View</Button>
+            
+            
+            
         </Grid>
 
         <Grid item xs={4}>
@@ -58,6 +87,16 @@ const search_rec=()=>{
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/can`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+                
+                )
+            }} className = "view"> View</Button>
+            
+
         </Grid>
         <Grid item xs={4}>
             <Typography variant = "h4" >
@@ -71,6 +110,14 @@ const search_rec=()=>{
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/cereal`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+            )
+            }} className = "view"> View</Button>
+            
         </Grid>
         <Grid item xs={4}>
             <Typography variant = "h4" >
@@ -84,6 +131,14 @@ const search_rec=()=>{
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/bakery`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+            )
+            }} className = "view"> View</Button>
+            
         </Grid>
         <Grid item xs={4}>
             <Typography variant = "h4" >
@@ -97,11 +152,19 @@ const search_rec=()=>{
                 />
                 
             </Paper>
+            <Button onClick = {() => {
+                Axios.get(`http://localhost:4000/foodtype/frozen`).then(
+                (response) => {
+                    setData(JSON.stringify(response));
+                }
+            )
+            }} className = "view"> View</Button>
+            
         </Grid>
         </Grid>
-        
+        <div>{data}</div>
     </div>   
     );
 
 }
-export default search_rec;
+export default Search_rec;
