@@ -25,5 +25,20 @@ describe("Status and Content",function(){
                 done();
             })
         })
+        
+        it('status should equal 200',function(done){
+            request(`http://localhost:${PORT}/foodtype/milk`,function(error, response, body){
+                expect(response.statusCode).to.equal(200);
+                done();
+            })
+        })
+        
+        it("should return list of candies",function(done){
+            request(`http://localhost:${PORT}/foodtype/candy`,function(error, response, body){
+                expect(JSON.parse(response.body).data).to.be.an("array");
+                done();
+            })
+        })
+        
     })
 })
