@@ -87,7 +87,7 @@ render() {
                             >
                                 Deselect All
                             </button>
-                            <a href="/groc_list">
+                            <a href="/search_rec">
                             <button   className="btn btn-primary" onClick={this.handleFormSubmit}>
                                 Continue
                             </button>
