@@ -23,7 +23,7 @@ const ShoppingScreen = () => {
 
   return (
     <div className='products__wrapper'>
-      {loading==false ? productsList.map((product) => (
+      {loading===false ? productsList.map((product) => (
         <FoodCard key={product.id} product={product} />
       )) : 'Loading...'}
     </div>
