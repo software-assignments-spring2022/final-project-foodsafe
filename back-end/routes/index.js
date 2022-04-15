@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var products = require('../data/products');
+const ProductModel = require('../models/product');
+//var products = require('../data/products');
 var milks = require('../data/milk');
 var cereals = require('../data/cereal');
 var candies = require('../data/candy');
@@ -15,7 +16,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list-products', function(req, res, next){
-  res.send({data: products});
+  const {filterOutName = '', minPrice = 0} = req.query;
+  
+  let filter = {};
+  if(filterOutName){
+    filter.name = {$nin: filterOutName}
+  }
+  if(minPrice){
+    filter.price = {$gt: minPrice}
+  }
+
+  ProductModel.find(filter)
+  .then((products) => res.json(products))
+  .catch((err) => {
+    res.json(err);
+    console.log("Products not found", err);
+  });
+  //res.send({data: products});
 });
 
 router.get('/foodtype/:product', (req,res) => {
