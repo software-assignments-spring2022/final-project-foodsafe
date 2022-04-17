@@ -16,14 +16,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list-products', function(req, res, next){
-  const {filterOutName = '', minPrice = 0} = req.query;
+  const {allergy = [], search = ""} = req.query;
   
   let filter = {};
-  if(filterOutName){
-    filter.name = {$nin: filterOutName}
+  if(allergy.length){
+    filter.allergy = {$nin: allergy}
   }
-  if(minPrice){
-    filter.price = {$gt: minPrice}
+  if(search){
+    filter.keywords = {$in: search}
   }
 
   ProductModel.find(filter)
