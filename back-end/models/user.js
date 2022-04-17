@@ -1,13 +1,4 @@
 const mongoose = require('mongoose');
-const Product = new mongoose.Schema({
-    name: {type: String},
-    price: {type: Number},
-    image: {type: String},
-    allergy: {type: String},
-    ingredients: [{type: String}],
-    keywords: [{type: String}],
-});
-
 
 //this is the user schema
 const User = new mongoose.Schema({
@@ -27,4 +18,5 @@ const User = new mongoose.Schema({
     groceryHistory:[]
 })
 
-module.exports = mongoose.model('Product',Product)
+module.exports = mongoose.model('User',User)
+
