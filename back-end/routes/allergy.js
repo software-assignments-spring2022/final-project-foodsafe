@@ -25,7 +25,13 @@ router.get('/',(req,res)=>{
 })
 
 //expect to receive an array of number
+const {body, validationResult}=require('express-validator');
 router.post('/',async(req,res)=>{
+    body('newAllergies').isLength({min: 0});
+    const errors= validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     Allergies=req.body.newAllergies;
     console.log(Allergies);
 })
