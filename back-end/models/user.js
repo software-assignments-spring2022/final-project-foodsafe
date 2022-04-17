@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Product = require('./product');
 //this is the user schema
 const User = new mongoose.Schema({
     userName:{
