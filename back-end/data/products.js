@@ -29,7 +29,6 @@ const products = [
       image:
         "https://www.ripplefoods.com/img/bottle1-extra.png?ver=3",
   
-      price: 4.29,
     },
     {
       _id: "5",

@@ -9,6 +9,8 @@ var bakeries = require('../data/bakery');
 var cans = require('../data/can');
 var frozens = require('../data/frozen')
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -18,6 +20,9 @@ router.get('/list-products', function(req, res, next){
   res.send({data: products});
 });
 
+router.get('/cart-state', function(req,res,next){
+  res.send({data: cartState})
+});
 router.get('/foodtype/:product', (req,res) => {
   if(req.params.product === "milk"){
     res.send({data : milks});
