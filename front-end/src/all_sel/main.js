@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import App from "./allergy";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+//ReactDOM.render(<App />, document.getElementById("root"));
 
 const all_sel=()=>{
     return (
