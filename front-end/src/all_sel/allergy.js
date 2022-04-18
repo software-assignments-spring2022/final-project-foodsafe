@@ -1,106 +1,123 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+const queryString = require('query-string');
+ 
 const OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
-
-class allergy extends Component {
-    state = {
-        checkboxes: OPTIONS.reduce(
-            (options, option) => ({
-                ...options,
-                [option]: false
-            }),
-            {}
-        )
-    };
-
-selectAllCheckboxes = isSelected => {
-    Object.keys(this.state.checkboxes).forEach(checkbox => {
-        this.setState(prevState => ({
-            checkboxes: {
-                ...prevState.checkboxes,
-                [checkbox]: isSelected
-            }
-        }));
-    });
+ 
+const Allergy = () => {
+   // state = {
+   //     checkboxes: OPTIONS.reduce(
+   //         (options, option) => ({
+   //             ...options,
+   //             [option]: false
+   //         }),
+   //         {}
+   //     )
+   // };
+  
+   const [checkboxes, setCheckboxes] = useState(OPTIONS.reduce(
+       (options, option) => ({
+           ...options,
+           [option]: false
+       }),
+       {}
+   ));
+ 
+   let navigate = useNavigate();
+ 
+const selectAllCheckboxes = isSelected => {
+   Object.keys(checkboxes).forEach(checkbox => {
+       setCheckboxes(prevState => ({
+ 
+               ...prevState,
+               [checkbox]: isSelected
+       }));
+   });
 };
-
-selectAll = () => this.selectAllCheckboxes(true);
-
-deselectAll = () => this.selectAllCheckboxes(false);
-
-handleCheckboxChange = changeEvent => {
-    const { name } = changeEvent.target;
-
-    this.setState(prevState => ({
-        checkboxes: {
-            ...prevState.checkboxes,
-            [name]: !prevState.checkboxes[name]
-        }
-    }));
+ 
+const selectAll = () => selectAllCheckboxes(true);
+ 
+const deselectAll = () => selectAllCheckboxes(false);
+ 
+const handleCheckboxChange = changeEvent => {
+   const { name } = changeEvent.target;
+ 
+   setCheckboxes(prevState => ({
+ 
+           ...prevState,
+           [name]: !prevState[name]
+   }));
 };
-
-handleFormSubmit = async formSubmitEvent => {
-    const selectedAllergy=[]
-   Object.entries(this.state.checkboxes).forEach((Allergy,index)=>{
-       if(Allergy[1])
-            selectedAllergy.push(index);
-   })
-
-   await Axios.post("http://localhost:4000/allergy",{
-      newAllergies:selectedAllergy
-    });
+ 
+const handleFormSubmit = async formSubmitEvent => {
+   const selectedAllergy=[]
+   let allergy=[];
+  Object.keys(checkboxes).forEach((key,index)=>{
+      if(checkboxes[key]){
+           selectedAllergy.push(index);
+           allergy.push(key);
+      }
+  })
+  const stringified = queryString.stringify({allergy:allergy});
+  console.log(allergy,stringified);
+  navigate(`/search_rec?${stringified}`)
+ 
+  await Axios.post("http://localhost:4000/allergy",{
+     newAllergies:selectedAllergy
+   });
+ 
+ 
+ 
 };
-
-createCheckbox = option => (
-    <Checkbox
-    label={option}
-    isSelected={this.state.checkboxes[option]}
-    onCheckboxChange={this.handleCheckboxChange}
-    key={option}
-    />
+ 
+const createCheckbox = option => (
+   <Checkbox
+   label={option}
+   isSelected={checkboxes[option]}
+   onCheckboxChange={handleCheckboxChange}
+   key={option}
+   />
 );
-
-createCheckboxes = () => OPTIONS.map(this.createCheckbox);
-
-render() {
-    return (
-        <div className="container">
-            <div className="row mt-5">
-                <div className="col-sm-12">
-                        {this.createCheckboxes()}
-
-                        <div className="form-group mt-2">
-                            <button
-                            type="button"
-                            className="btn btn-outline-primary mr-2"
-                            onClick={this.selectAll}
-                            >
-                                Select All
-                            </button>
-                            <button
-                            type="button"
-                            className="btn btn-outline-primary mr-2"
-                            onClick={this.deselectAll}
-                            >
-                                Deselect All
-                            </button>
-                            <a href="/search_rec">
-                            <button   className="btn btn-primary" onClick={this.handleFormSubmit}>
-                                Continue
-                            </button>
-                            </a>
-                            
-              
-                        </div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
+ 
+const createCheckboxes = () => OPTIONS.map(createCheckbox);
+ 
+ 
+   return (
+       <div className="container">
+           <div className="row mt-5">
+               <div className="col-sm-12">
+                       {createCheckboxes()}
+ 
+                       <div className="form-group mt-2">
+                           <button
+                           type="button"
+                           className="btn btn-outline-primary mr-2"
+                           onClick={selectAll}
+                           >
+                               Select All
+                           </button>
+                           <button
+                           type="button"
+                           className="btn btn-outline-primary mr-2"
+                           onClick={deselectAll}
+                           >
+                               Deselect All
+                           </button>
+                           {/* <a href="/search_rec"> */}
+                           <button   className="btn btn-primary" onClick={handleFormSubmit}>
+                               Continue
+                           </button>
+                           {/* </a> */}
+                          
+            
+                       </div>
+               </div>
+           </div>
+       </div>
+   );
+ 
 }//end class component
-
-export default allergy;
+ 
+export default Allergy;
