@@ -9,11 +9,6 @@ import {BrowserRouter, Routes, Route,useNavigate} from "react-router-dom";
 import Change_allergy_button from './change_allergy_button';
 import {Button} from "react-bootstrap";
 import Axios from 'axios';
-{/* <div className='pictures_captions'>
-            <Recommended_pictures name='candies' image={candies} />
-            <Recommended_pictures name='cereals' image={cereals} />
-            <Recommended_pictures name = 'frozen foods' image={frozen_foods} />
-    </div> */}
 
 
 
@@ -21,10 +16,17 @@ const Search_rec=()=>{
     const[data, setData] = useState("");
 
     let navigate = useNavigate ();
+
+    function LogOut (){
+        localStorage.clear()
+        navigate("/")
+    }
+    
     return (
         
     <div className='container'>
         <Button onClick = { () => {navigate("/set_acc")}} className = "change_allergy_button"> Change Allergy </Button>
+        <Button onClick = {LogOut} className = "change_allergy_button"> Log Out </Button>
         <Header name="Recommended Food Type" />
         <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
             

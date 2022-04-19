@@ -1,37 +1,65 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import {Form, Button, Card} from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { useNavigate} from 'react-router-dom';
-
+import {Navigate, useNavigate} from 'react-router-dom';
+import axios from "axios";
 export default function Login() {
     
+    const [response, setResponse] = useState({});
+    const [error, setError] = useState("");
+
+    useEffect (() =>{
+        if (response.success && response.token){
+            localStorage.setItem("token", response.token)
+        }
+    }, [response])
+
+    async function handleLogin (e){
+        e.preventDefault()
+        
+        try{
+            const userInfo = {
+                username: e.target.username.value,
+                password: e.target.password.value,
+            }
+            const response = await axios.post(`http://localhost:4000/login`,
+                            userInfo
+            )
+            console.log(`Server response: ${JSON.stringify(response.data, null, 0)}`)
+            setResponse(response.data)
+        }catch (err){
+            setError("Incorrect username or password")
+        }
+    }
+
     let navigate = useNavigate ();
-    //let navigate2 = useNavigate ();
-    return(  
-        <Card>
-            <Card.Body>
-                <h2 className = "login_text"> Login</h2>
-                <Form>
-                    <Form.Group id = "user">
-                        <Form.Label>User</Form.Label>
-                        <Form.Control type = "user" required />
-                    </Form.Group>
-                    <Form.Group id = "password">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type = "password" required />
-                    </Form.Group>
 
-                    <br/>
-                    <Button onClick = { () => {navigate("/all_sel")}}className = "login_button" type = "submit"> Login</Button>
+    if(response.success){
+        return <Navigate to = "/all_sel" />
+    }
+    else{
+        return(  
+            <Card>
+                <Card.Body>
+                
+                    <h1>Login</h1>
+                        <Form onSubmit={handleLogin}>
+                        <Form.Label>Username </Form.Label>
+                        <Form.Control type="text" name="username" placeholder="username" required />
+                        
+                        <Form.Label>Password </Form.Label>
+                        <Form.Control type="password" name="password" placeholder="password" required/>
+                        
+                        <br/>
+                        <Button className = "login_button" type = "submit" > Login</Button>
+                        &nbsp;
+                        <Button onClick = { () => {navigate("/sign_up")}}className = "register_button" type = "button"> Register</Button>
 
-                    &nbsp;
+                        </Form>
                     
-                    <Button onClick = { () => {navigate("/sign_up")}}className = "register_button" type = "submit"> Register</Button>
-
-                </Form>
-            </Card.Body>
-        </Card>
-    
-    )
-
+                    {error? <p className="error">{error}</p> : ""} 
+                </Card.Body>
+            </Card>
+        )
+    }
 }
