@@ -5,12 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors=require('cors');
 require('dotenv').config();
-console.log(process.env);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const allergyRouter=require('./routes/allergy')
 const foodTypeRouter=require('./routes/foodType')
+
 
 const mongoose = require('mongoose');
 const connectionString = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.v4z3g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
@@ -50,6 +50,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/allergy', allergyRouter);
 app.use('/food',foodTypeRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
