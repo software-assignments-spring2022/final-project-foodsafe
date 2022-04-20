@@ -10,9 +10,11 @@ var bakeries = require('../data/bakery');
 var cans = require('../data/can');
 var frozens = require('../data/frozen')
 
+
 const userModel = require('../models/registeredUsers')
 const jwt = require("jsonwebtoken")
 const { jwtOptions, jwtStrategy } = require("../jwt-config.js") 
+
 
 
 /* GET home page. */
@@ -40,6 +42,9 @@ router.get('/list-products', function(req, res, next){
   //res.send({data: products});
 });
 
+router.get('/cart-state', function(req,res,next){
+  res.send({data: cartState})
+});
 router.get('/foodtype/:product', (req,res) => {
   if(req.params.product === "milk"){
     res.send({data : milks});

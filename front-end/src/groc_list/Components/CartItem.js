@@ -14,9 +14,9 @@ const CartItem = ({ item }) => {
       <div>
         {item.name} {formatCurrency(`${item.price}`, opts)}
       </div>
-      <button className='CartItem__button' onClick={() => removeItem(item._id)}>
+      <button className='CartItem__button' onClick={() => removeItem(item)}>
         Remove
-      </button>
+      </button>      
     </li>
   );
 };

@@ -8,4 +8,5 @@ const Product = new mongoose.Schema({
     keywords: [{type: String}],
 });
 
-module.exports = mongoose.model('Product',Product);
+
+module.exports = mongoose.model('Product',Product)
