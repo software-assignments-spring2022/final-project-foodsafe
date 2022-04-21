@@ -152,58 +152,6 @@ export default function PrimarySearchAppBar() {
           >
             Food Safe{"   "}
           </Typography>
-
- {/* <Paper sx={{display: 'flex', width:"270px"}}> 
-    <a href="/groc_list" >
-    <IconButton aria-label="search" size="large" onClick ={submitSearch} >
-        <SearchIcon fontSize="inherit" />
-      </IconButton>
-    </a>
-          <Autocomplete
-          
-            id="asynchronous-demo"
-            sx={{ width: 229 }}
-            open={open}
-            freeSolo={true}
-            onOpen={() => {
-              setOpen(true);
-            }}
-            onClose={() => {
-              setOpen(false);
-            }}
-            isOptionEqualToValue={(option, value) => option === value}
-            getOptionLabel={(option) => option}
-            options={options}
-            loading={loading}
-            renderInput={(params) => (
-              
-              <TextField
-                sx={{padding:"10px"}}
-                style={{color:'white'}}
-                {...params}
-                placeholder="Search"
-                variant="standard"
-                onChange = {handleSearch}
-                InputProps={{
-                  ...params.InputProps,
-                  endAdornment: (
-                    <React.Fragment>
-                      {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                      {params.InputProps.endAdornment}
-                    </React.Fragment>
-                  ),
-                }}
-              >
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-
-            </TextField>
-            
-            )}
-          />
-
-          </Paper> */}
           
 
           <Box sx={{ flexGrow: 1 }} />
