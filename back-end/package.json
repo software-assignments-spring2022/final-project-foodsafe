@@ -14,11 +14,22 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "^0.29.0",
+<<<<<<< HEAD
+=======
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+>>>>>>> 3e3e0d88529aa282e98722c88c22692b8b65bfe9
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.0",
     "morgan": "~1.9.1",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
     "nodemon": "^2.0.15",
     "start": "^5.1.0"
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 3e3e0d88529aa282e98722c88c22692b8b65bfe9
   },
   "devDependencies": {
     "chai": "^4.3.6",

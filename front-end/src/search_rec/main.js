@@ -12,12 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
  
 import {Button} from "react-bootstrap";
 import Axios from 'axios';
-{/* <div className='pictures_captions'>
-           <Recommended_pictures name='candies' image={candies} />
-           <Recommended_pictures name='cereals' image={cereals} />
-           <Recommended_pictures name = 'frozen foods' image={frozen_foods} />
-   </div> */}
- 
+
  
  
 const Search_rec=()=>{
@@ -35,6 +30,11 @@ const Search_rec=()=>{
            navigate(`/groc_list?search=${searchQuery}&allergy=${allergy}`);
        }
    }
+   
+   function LogOut (){
+        localStorage.clear()
+        navigate("/")
+    }
  
    return (
    <div className='container'>
@@ -46,8 +46,9 @@ const Search_rec=()=>{
                onChange = {(event) => {setSearchQuery(event.target.value)}}
              />
        <Button onClick = {handleSearch} className = "search_button"> Search </Button>
- 
+        
        <Button onClick = { () => {navigate("/set_acc")}} className = "change_allergy_button"> Change Allergy </Button>
+       <Button onClick = {LogOut} className = "change_allergy_button"> Log Out </Button>
        <Header name="Recommended Food Type" />
        <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
           
@@ -189,5 +190,6 @@ const Search_rec=()=>{
    </div>  
    );
  
+
 }
 export default Search_rec;

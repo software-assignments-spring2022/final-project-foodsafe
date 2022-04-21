@@ -11,6 +11,11 @@ var cans = require('../data/can');
 var frozens = require('../data/frozen')
 
 
+const userModel = require('../models/registeredUsers')
+const jwt = require("jsonwebtoken")
+const { jwtOptions, jwtStrategy } = require("../jwt-config.js") 
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -73,7 +78,59 @@ router.get('/foodtype/:product', (req,res) => {
   
 })
 
+//route for handling register new user
+router.post('/register', (req, res) => {
+    let user = new userModel({
+        username: req.body.username,
+        password: req.body.password
+    })
 
+    //insert data to moongose
+    user.save()
+      .then(user=> {
+        res.send({
+          success : true,
+          message : `User ${username} created successfully `,
+          user : {
+            username : user.username
+          }
+        })
+      })
+      .catch(err=> {
+        res.send({
+          success : false,
+          message:  "Unable to create user",
+          error: err
+        })
+      })
+  })
+
+//route for handling login
+router.post('/login', function(req, res){
+  const username = req.body.username
+  const password = req.body.password
+
+  //try to look for user in database
+  userModel.findOne({username : username})
+    .then(user => {
+      //no registered user
+      if(!user) return res.status(401).json({success: false, massage: `No such user`})
+
+      //correct username and password
+      if(req.body.password == user.password){
+        const payload = {
+            username: user.username,
+            id : user.id
+        }
+        const token = jwt.sign(payload, jwtOptions.secretOrKey)
+        return res.json({success: true, message: "Successful Login", token: token})
+      }else{
+          //// incorrect password
+        return res.status(401).json({success: false, message: "Incorrect password"})
+      }
+    })
+
+})
 
 
 
