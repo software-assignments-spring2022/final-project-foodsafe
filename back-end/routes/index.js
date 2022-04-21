@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const ProductModel = require('../models/product');
-//var products = require('../data/products');
+var products = require('../data/products');
 var milks = require('../data/milk');
 var cereals = require('../data/cereal');
 var candies = require('../data/candy');
@@ -37,9 +37,9 @@ router.get('/list-products', function(req, res, next){
   //res.send({data: products});
 });
 
-router.get('/cart-state', function(req,res,next){
-  res.send({data: cartState})
-});
+// router.get('/cartState', function(req,res,next){
+//   res.send({data: cartState})
+// });
 router.get('/foodtype/:product', (req,res) => {
   if(req.params.product === "milk"){
     res.send({data : milks});

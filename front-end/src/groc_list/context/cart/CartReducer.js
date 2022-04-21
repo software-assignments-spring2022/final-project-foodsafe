@@ -1,4 +1,14 @@
-import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM,CHANGE_QUANTITY } from "../Types";
+import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM,  } from "../Types";
+
+let INITIAL_STATE = {
+	cart: [],
+};
+
+if (localStorage.getItem('cart')) {
+	INITIAL_STATE.cart = JSON.parse(localStorage.getItem('cart'));
+} else {
+	INITIAL_STATE.cart = [];
+}
 
 const CartReducer = (state, action) => {
   switch (action.type) {
@@ -24,13 +34,6 @@ const CartReducer = (state, action) => {
         ),
       };
     }
-    case CHANGE_QUANTITY:
-      return {
-        ...state,
-        cartItems: state.cartItems.filter((c) =>
-          c.id === action.payload.id ? (c.qty = action.payload.qty) : c.qty
-        ),
-      };
 
     default:
       return state;
