@@ -52,21 +52,38 @@ const handleCheckboxChange = changeEvent => {
 };
  
 const handleFormSubmit = async formSubmitEvent => {
-   const selectedAllergy=[]
-   let allergy=[];
-  Object.keys(checkboxes).forEach((key,index)=>{
-      if(checkboxes[key]){
-           selectedAllergy.push(index);
-           allergy.push(key);
-      }
-  })
-  const stringified = queryString.stringify({allergy:allergy});
-  console.log(allergy,stringified);
-  navigate(`/search_rec?${stringified}`)
- 
-  await Axios.post("http://localhost:4000/allergy",{
-     newAllergies:selectedAllergy
-   });
+    
+
+    if(localStorage.getItem('token')){
+        const selectedAllergy=[]
+        let allergy=[];
+        Object.keys(checkboxes).forEach((key,index)=>{
+            if(checkboxes[key]){
+                selectedAllergy.push(index);
+                allergy.push(key);
+            }
+        })
+        const stringified = queryString.stringify({allergy:allergy});
+        console.log(allergy,stringified);
+        navigate(`/search_rec?${stringified}`)
+        
+        await Axios.post("http://localhost:4000/allergy",{
+            newAllergies:selectedAllergy
+        });
+    }else{
+        const selectedAllergy=[]
+        let allergy=[];
+        Object.keys(checkboxes).forEach((key,index)=>{
+            if(checkboxes[key]){
+                selectedAllergy.push(index);
+                allergy.push(key);
+            }
+        })
+        const stringified = queryString.stringify({allergy:allergy});
+        navigate(`/search_rec?${stringified}`)
+        localStorage.setItem('allergies',allergy);
+        console.log(localStorage.getItem('allergies'))
+    }
  
  
  

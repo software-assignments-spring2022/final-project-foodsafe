@@ -9,6 +9,7 @@ import A_icon from '@mui/icons-material/Add';
 import Axios from "axios";
 import {useState,useEffect} from "react";
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import Login from '../sign_in/LoginComponent.js';
 
 function not(a, b) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -45,18 +46,43 @@ export default function TransferList() {
 
     setChecked(newChecked);
   };
-
+  const  OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
   async function getNew() {
-    const body=await Axios.get("http://localhost:4000/allergy");
-    console.log(body.data);
-    setRight(body.data);
-    setLeft(not(all,body.data));
+
+    const loginState=localStorage.getItem('token');
+    console.log(loginState,'login state')
+    if(loginState){
+      const body=await Axios.get("http://localhost:4000/allergy");
+      console.log(body.data);
+      setRight(body.data);
+      setLeft(not(all,body.data));
+    }
+    else{
+      const allergiesStr=localStorage.getItem("allergies").split(',');
+      const allergies=allergiesStr.map(str=>OPTIONS.indexOf(str));
+      console.log(allergies);
+      setRight(allergies);
+      setLeft(not(all,allergies));
+    }
+    
   }
 
   async function setNew(){
-    Axios.post("http://localhost:4000/allergy",{
-      newAllergies:right
-    })
+    const loginState=localStorage.getItem('token');
+    console.log(loginState,'login state')
+    if(loginState){
+      Axios.post("http://localhost:4000/allergy",{
+        username:localStorage.getItem('username'),
+        newAllergies:right
+      })
+    }else{
+      const allergiesStr=right.map((ele)=>OPTIONS[ele]);
+      console.log(allergiesStr)
+      let str=allergiesStr.reduce(((ret,ele)=>ret+ele+','),'');
+      str=str.substring(0,str.length-1);
+      localStorage.setItem('allergies',str);
+      console.log(str);
+    }
   }
 
   const numberOfChecked = (items) => intersection(checked, items).length;

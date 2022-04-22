@@ -21,6 +21,7 @@ const ifAllergic={
 
 
 router.get('/',(req,res)=>{
+    console.log(Allergies);
     res.json(Allergies);
 })
 

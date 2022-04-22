@@ -4,7 +4,10 @@ mongoose.connect(connectionString);
 
 const userSchema = mongoose.Schema({
     username: {type: String},
-    password: {type: String}
+    password: {type: String},
+    myALlergy:{
+        type:[]
+    },
 })
 
 const userModel = mongoose.model('registeredUser', userSchema)
