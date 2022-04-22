@@ -25,7 +25,7 @@ export default function Login() {
             const response = await axios.post(`http://localhost:4000/login`,
                             userInfo
             )
-            console.log(`Server response: ${JSON.stringify(response.data, null, 0)}`)
+            localStorage.setItem("username", e.target.username.value)
             setResponse(response.data)
         }catch (err){
             setError("Incorrect username or password")
@@ -41,7 +41,7 @@ export default function Login() {
         if (localStorage.getItem("token")){
             return(
                 <h1>
-                    Already logged in
+                    Hi {localStorage.getItem("username")} you are already logged in
                 </h1>
             )
         }
