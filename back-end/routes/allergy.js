@@ -19,7 +19,7 @@ const ifAllergic={
 //this is used for the introduction page (only once)
 //expect to receive an array of number
 
-
+//assume the user is logged
 router.get('/',(req,res)=>{
     console.log(Allergies);
     res.json(Allergies);
