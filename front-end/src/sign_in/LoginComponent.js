@@ -38,6 +38,13 @@ export default function Login() {
         return <Navigate to = "/all_sel" />
     }
     else{
+        if (localStorage.getItem("token")){
+            return(
+                <h1>
+                    Already logged in
+                </h1>
+            )
+        }
         return(  
             <Card>
                 <Card.Body>
@@ -54,7 +61,9 @@ export default function Login() {
                         <Button className = "login_button" type = "submit" > Login</Button>
                         &nbsp;
                         <Button onClick = { () => {navigate("/sign_up")}}className = "register_button" type = "button"> Register</Button>
-
+                        &nbsp;
+                        <Button onClick = { () => {navigate("/all_sel")}} className = "continue_button" type = "button"> Continue as Guest</Button>
+ 
                         </Form>
                     
                     {error? <p className="error">{error}</p> : ""} 
