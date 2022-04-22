@@ -11,6 +11,7 @@ var cans = require('../data/can');
 var frozens = require('../data/frozen')
 
 
+const {hashSync, compareSync} = require("bcrypt");
 const userModel = require('../models/registeredUsers')
 const jwt = require("jsonwebtoken")
 const { jwtOptions, jwtStrategy } = require("../jwt-config.js") 
@@ -80,9 +81,10 @@ router.get('/foodtype/:product', (req,res) => {
 
 //route for handling register new user
 router.post('/register', (req, res) => {
+    //hash the pasword with bcrypt
     let user = new userModel({
         username: req.body.username,
-        password: req.body.password
+        password: hashSync(req.body.password, 10)
     })
 
     //insert data to moongose
@@ -117,7 +119,7 @@ router.post('/login', function(req, res){
       if(!user) return res.status(401).json({success: false, massage: `No such user`})
 
       //correct username and password
-      if(req.body.password == user.password){
+      if(compareSync (req.body.password,user.password)){
         const payload = {
             username: user.username,
             id : user.id
