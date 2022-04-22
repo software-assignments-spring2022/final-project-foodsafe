@@ -48,7 +48,7 @@ const Search_rec=()=>{
        <Button onClick = {handleSearch} className = "search_button"> Search </Button>
         
        <Button onClick = { () => {navigate("/set_acc")}} className = "change_allergy_button"> Change Allergy </Button>
-       <Button onClick = {() => {navigate("/sign_in")}} className = "sign_out"> Log Out </Button>
+       <Button onClick = {LogOut} className = "sign_out"> Log Out </Button>
        <Header name="Recommended Food Type" />
        <Grid container rowSpacing={10} columnSpacing={{ xs: 10, sm: 10, md: 10 }}>
           
