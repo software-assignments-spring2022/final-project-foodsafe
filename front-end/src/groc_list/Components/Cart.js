@@ -1,13 +1,19 @@
-import {React,  useContext } from "react";
+import {React,  useContext, useState, useEffect } from "react";
 import "./Cart.css";
 import formatCurrency from "format-currency";
 import CartContext from "../context/cart/CartContext";
 import CartItem from "./CartItem";
 
+//const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
 
 const Cart = () => {
   const { showCart, cartItems, showHideCart } = useContext(CartContext);
   let opts = { format: "%s%v", symbol: "$" };
+
+  // const[cartItems, setCart] = useState(cartFromLocalStorage)
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cartItems))
+  // }, [cartItems])
 
   return (
     <>

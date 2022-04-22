@@ -4,19 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors=require('cors');
-<<<<<<< HEAD
 const env = require('dotenv');
 
 
 env.config();
 
-=======
-require('dotenv').config();
->>>>>>> 3e3e0d88529aa282e98722c88c22692b8b65bfe9
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var  cartStateRouter = require('./routes/cart')
 const allergyRouter=require('./routes/allergy')
 const foodTypeRouter=require('./routes/foodType')
 
@@ -59,12 +54,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/allergy', allergyRouter);
 app.use('/food',foodTypeRouter);
-<<<<<<< HEAD
-app.use('/cart',cartStateRouter)
-=======
 
 
->>>>>>> 3e3e0d88529aa282e98722c88c22692b8b65bfe9
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

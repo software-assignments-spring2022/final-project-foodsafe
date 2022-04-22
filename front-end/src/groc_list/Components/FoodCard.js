@@ -8,10 +8,6 @@ const FoodCard = ({product}) => {
     let  opts = {format: '%s%v', symbol: '$'}
   return (
     <div className='productCard_Wrapper'>
-      {product.length === 0 (
-          <h4>Sorry there is no such food! Try searching another food. </h4>
-      )}
-
       <div>
           <img className='productCard__img' src={product.image} alt='' />
           <h4> {product.name}</h4>

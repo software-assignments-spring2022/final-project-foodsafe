@@ -3,16 +3,17 @@ import CartContext from "./CartContext";
 import CartReducer from "./CartReducer";
 import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM} from "../Types";
 
+
 const CartState = ({ children }) => {
   const initalState = {
     showCart: false,
-    cartItems: [],
+    cartItems: JSON.parse(localStorage.getItem("cart") || "[]")
   };
   
-
   const [state, dispatch] = useReducer(CartReducer, initalState);
 
-  const addToCart = (item) => {
+
+  const addToCart = item  =>  {
     const cart = localStorage.getItem('cart')
 		? JSON.parse(localStorage.getItem('cart'))
 		: [];
@@ -35,14 +36,14 @@ const CartState = ({ children }) => {
 		localStorage.setItem('cart', JSON.stringify(cart));
 
 		// add cart to redux
-  }
-  dispatch({
-    type: ADD_TO_CART,
-    payload: item,
-  });
+		dispatch({
+			type: ADD_TO_CART,
+			payload: item,
+		});
+	}
   };
 
-  const showHideCart = () => {
+  const showHideCart = (item) => {
     dispatch({ type: SHOW_HIDE_CART });
   };
   
@@ -51,10 +52,11 @@ const CartState = ({ children }) => {
 		? JSON.parse(localStorage.getItem('cart'))
 		: [];
 
-	const updatedCart = cart.filter(cartItem => cartItem._id !== item._id);
+	 const updatedcart = cart.filter(cartItem => cartItem._id !== item._id);
 
-	localStorage.setItem('cart', JSON.stringify(updatedCart));
-    dispatch({ type: REMOVE_ITEM, payload: item});
+	localStorage.setItem('cart', JSON.stringify(updatedcart));
+
+    dispatch({ type: REMOVE_ITEM, payload:item});
   };
 
   return (
