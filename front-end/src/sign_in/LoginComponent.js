@@ -3,6 +3,8 @@ import {Form, Button, Card} from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import {Navigate, useNavigate} from 'react-router-dom';
 import axios from "axios";
+import './login.css'
+
 export default function Login() {
     
     const [response, setResponse] = useState({});
@@ -44,8 +46,13 @@ export default function Login() {
     else{
         if (localStorage.getItem("token")){
             return(
-                <h1>
+                <h1 className="logintext">
                     Hi {localStorage.getItem("username")} you are already logged in
+                    <div>Go checkout products for you
+                     &nbsp;
+                    <Button onClick = { () => {navigate("/search_rec")}}> Check it Out</Button>
+                    </div>
+                    
                 </h1>
             )
         }
