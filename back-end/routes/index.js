@@ -16,7 +16,7 @@ const {hashSync, compareSync} = require("bcrypt");
 const userModel = require('../models/registeredUsers')
 const jwt = require("jsonwebtoken")
 const {jwtOptions, jwtStrategy} = require("../jwt-config.js")
-const {query, validationResult} = require('express-validator');
+//const {query, validationResult} = require('express-validator');
 
 
 /* GET home page. */
