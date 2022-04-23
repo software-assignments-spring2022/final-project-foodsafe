@@ -29,7 +29,7 @@ router.get('/login',(req,res)=>{
 })
 */
 router.post('/login',(req,res)=>{
-  /body('username').isLength({min: 1}),
+  //body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
   //body('password').isLength({ min: 1}),
 
