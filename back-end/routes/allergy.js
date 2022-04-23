@@ -29,13 +29,13 @@ router.get('/login',(req,res)=>{
 */
 router.post('/login',(req,res)=>{
     username=req.body.username;
-    console.log(username);
+    //console.log(username);
     res.json("Allergies");
 })
 
 router.get('/',async(req,res)=>{
    const user=await userModel.findOne({'username':username});
-    console.log(user);
+    //console.log(user);
     user.myAllergy=user.myAllergy||[];
     //console.log(Allergies);
     res.json(user.myAllergy);
@@ -46,7 +46,7 @@ router.post('/',async(req,res)=>{
     const user=await userModel.findOne({'username':username});
     user.myAllergy=req.body.newAllergies;
     await user.save();
-    console.log(user);
+    //console.log(user);
 })
 
 module.exports = router;
