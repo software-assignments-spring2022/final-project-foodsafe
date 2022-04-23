@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+const mongoose=require('mongoose');
+const userModel=mongoose.model('registeredUser');
 let Allergies=[];
 //['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
 /*
@@ -20,15 +21,32 @@ const ifAllergic={
 //expect to receive an array of number
 
 //assume the user is logged
-router.get('/',(req,res)=>{
-    console.log(Allergies);
-    res.json(Allergies);
+let username='jeffery';
+/*
+router.get('/login',(req,res)=>{
+    res.json("Allergies");
+})
+*/
+router.post('/login',(req,res)=>{
+    username=req.body.username;
+    console.log(username);
+    res.json("Allergies");
+})
+
+router.get('/',async(req,res)=>{
+   const user=await userModel.findOne({'username':username});
+    console.log(user);
+    user.myAllergy=user.myAllergy||[];
+    //console.log(Allergies);
+    res.json(user.myAllergy);
 })
 
 //expect to receive an array of number
 router.post('/',async(req,res)=>{
-    Allergies=req.body.newAllergies;
-    console.log(Allergies);
+    const user=await userModel.findOne({'username':username});
+    user.myAllergy=req.body.newAllergies;
+    await user.save();
+    console.log(user);
 })
 
 module.exports = router;

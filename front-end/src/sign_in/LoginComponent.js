@@ -25,6 +25,10 @@ export default function Login() {
             const response = await axios.post(`http://localhost:4000/login`,
                             userInfo
             )
+            await axios.post(`http://localhost:4000/allergy/login`,{
+                            username:e.target.username.value
+                }
+            )
             localStorage.setItem("username", e.target.username.value)
             setResponse(response.data)
         }catch (err){
