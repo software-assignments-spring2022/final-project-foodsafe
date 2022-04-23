@@ -4,14 +4,13 @@ import Header from './header.js';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import Paper from "@mui/material/Paper"
-import {BrowserRouter, Routes, Route,useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import Change_allergy_button from './change_allergy_button';
 import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
+
  
 import {Button} from "react-bootstrap";
-import Axios from 'axios';
+
 
  
  
@@ -66,33 +65,25 @@ const Search_rec=()=>{
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/cake`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-           )
+               navigate(`/groc_list?search=cake&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
        </Grid>
  
        <Grid item xs={4}>
            <Typography variant = "h4" >
-                   Candy
+                   Cheese
            </Typography>
            <Paper elevation = {3} >
                <img
               
-                   src = "https://sites.imsa.edu/acronym/files/2021/10/candy.jpg"
+                   src = "https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1100,c_fill,g_auto,h_619,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200623110902-cheddar-cubes.jpg"
                    className = "food"
                />
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/candy`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-           )
+               navigate(`/groc_list?search=cheese&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
           
@@ -112,12 +103,7 @@ const Search_rec=()=>{
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/can`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-              
-               )
+               navigate(`/groc_list?search=can&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
  
@@ -135,11 +121,7 @@ const Search_rec=()=>{
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/cereal`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-           )
+               navigate(`/groc_list?search=cereal&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
        </Grid>
@@ -156,11 +138,7 @@ const Search_rec=()=>{
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/bakery`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-           )
+               navigate(`/groc_list?search=bakery&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
        </Grid>
@@ -177,11 +155,7 @@ const Search_rec=()=>{
               
            </Paper>
            <Button onClick = {() => {
-               Axios.get(`http://localhost:4000/foodtype/frozen`).then(
-               (response) => {
-                   setData(JSON.stringify(response));
-               }
-           )
+               navigate(`/groc_list?search=frozen&allergy=${allergy}`);
            }} className = "view"> View</Button>
           
        </Grid>
