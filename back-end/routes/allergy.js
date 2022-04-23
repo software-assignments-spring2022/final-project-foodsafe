@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose=require('mongoose');
 const userModel=mongoose.model('registeredUser');
-const {body, validationResult } = require('express-validator');
+//const {body, validationResult } = require('express-validator');
 let Allergies=[];
 //['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
 /*
