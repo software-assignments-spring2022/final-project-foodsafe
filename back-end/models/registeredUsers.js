@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     myAllergy:{
         type:[]
     },
+    hasLoggedIn : {type : Boolean}
 })
 
 const userModel = mongoose.model('registeredUser', userSchema)
