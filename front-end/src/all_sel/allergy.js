@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {Navigate, useNavigate } from "react-router-dom";
 const queryString = require('query-string');
 const OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
 const Allergy = () => {
@@ -83,37 +83,45 @@ const createCheckbox = option => (
   />
 );
 const createCheckboxes = () => OPTIONS.map(createCheckbox);
-  return (
-      <div className="container">
-          <div className="row mt-5">
-              <div className="col-sm-12">
-                      {createCheckboxes()}
-                      <div className="form-group mt-2">
-                          <button
-                          type="button"
-                          className="btn btn-outline-primary mr-2"
-                          onClick={selectAll}
-                          >
-                              Select All
-                          </button>
-                          <button
-                          type="button"
-                          className="btn btn-outline-primary mr-2"
-                          onClick={deselectAll}
-                          >
-                              Deselect All
-                          </button>
-                          {/* <a href="/search_rec"> */}
-                          <button   className="btn btn-primary" onClick={handleFormSubmit}>
-                              Continue
-                          </button>
-                          {/* </a> */}
-                        
-          
-                      </div>
-              </div>
-          </div>
-      </div>
-  );
+
+
+  if (localStorage.getItem("loginBefore") === "true"){
+          return <Navigate to = "/search_rec" />
+    }  
+  else{
+    return (
+        
+        <div className="container">
+            <div className="row mt-5">
+                <div className="col-sm-12">
+                        {createCheckboxes()}
+                        <div className="form-group mt-2">
+                            <button
+                            type="button"
+                            className="btn btn-outline-primary mr-2"
+                            onClick={selectAll}
+                            >
+                                Select All
+                            </button>
+                            <button
+                            type="button"
+                            className="btn btn-outline-primary mr-2"
+                            onClick={deselectAll}
+                            >
+                                Deselect All
+                            </button>
+                            {/* <a href="/search_rec"> */}
+                            <button   className="btn btn-primary" onClick={handleFormSubmit}>
+                                Continue
+                            </button>
+                            {/* </a> */}
+                            
+            
+                        </div>
+                </div>
+            </div>
+        </div>
+        );
+    }
 }//end class component
 export default Allergy;
