@@ -9,12 +9,16 @@ export default function Login() {
     
     const [response, setResponse] = useState({});
     const [error, setError] = useState("");
+    
 
     useEffect (() =>{
         if (response.success && response.token){
             localStorage.setItem("token", response.token)
+           
         }
     }, [response])
+
+    
 
     async function handleLogin (e){
         e.preventDefault()
@@ -31,8 +35,15 @@ export default function Login() {
                             username:e.target.username.value
                 }
             )
+            const loginResponse = await axios.post(`http://localhost:4000/loginStatus`, {username : e.target.username.value})
+            
+            localStorage.setItem("loginBefore", loginResponse.data)
+            console.log(localStorage.getItem("loginBefore"))
+            
             localStorage.setItem("username", e.target.username.value)
+            
             setResponse(response.data)
+            
         }catch (err){
             setError("Incorrect username or password")
         }
@@ -47,7 +58,8 @@ export default function Login() {
         if (localStorage.getItem("token")){
             return(
                 <h1 className="logintext">
-                    Hi {localStorage.getItem("username")} you are already logged in
+                    Hi {localStorage.getItem("username")} you are already logged in  
+                    
                     <div>Go checkout products for you
                      &nbsp;
                     <Button onClick = { () => {navigate("/search_rec")}}> Check it Out</Button>

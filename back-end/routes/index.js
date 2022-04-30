@@ -15,7 +15,9 @@ var frozens = require('../data/frozen')
 const {hashSync, compareSync} = require("bcrypt");
 const userModel = require('../models/registeredUsers')
 const jwt = require("jsonwebtoken")
-const {jwtOptions, jwtStrategy} = require("../jwt-config.js")
+const {jwtOptions, jwtStrategy} = require("../jwt-config.js");
+const { findOneAndUpdate } = require('../models/registeredUsers');
+const { update } = require('lodash');
 //const {query, validationResult} = require('express-validator');
 
 
@@ -100,9 +102,10 @@ router.post('/register', (req, res) => {
     //hash the pasword with bcrypt
     let user = new userModel({
         username: req.body.username,
-        password: hashSync(req.body.password, 10)
+        password: hashSync(req.body.password, 10),
+        hasLoggedIn : false
     })
-
+    
     //insert data to moongose
     user.save()
       .then(user=> {
@@ -143,9 +146,21 @@ router.post('/login', function(req, res){
     .then(user => {
       //no registered user
       if(!user) return res.status(401).json({success: false, massage: `No such user`})
-
+      
       //correct username and password
       if(compareSync (req.body.password,user.password)){
+        // const loginStatus = true;
+        // let updateStatus = userModel.findOneAndUpdate({username: username}, loginStatus,{
+        //   returnOriginal: false
+        // })
+
+        // //update haslogged in to true
+        // (async () => {
+        //   user.hasLoggedIn = true
+        //   await user.save()
+        // }) ();
+        
+        
         const payload = {
             username: user.username,
             id : user.id
@@ -158,6 +173,46 @@ router.post('/login', function(req, res){
       }
     })
 
+})
+
+// router.post ("/loggedBefore", function(req, res){
+//     userModel.findOne({username: req.body.username})
+//       .then(user =>{
+//         return res.json({success: true, loginBefore : user.hasLoggedIn.toString()})
+//       })
+    
+// })
+
+
+router.post("/loginStatus", function(req, res){
+  //usertest = "test2"
+  userModel.findOne({username: req.body.username})
+        .then(user =>{
+          return res.json(user.hasLoggedIn.toString())
+        })
+        .catch(err =>{
+          res.send({
+            message: "no such user"
+          })
+        })
+})
+
+//route for logout to check the propoerty of user has loggedin to true first time logging in (has never logged out)
+router.post("/logout", function (req, res) {
+  userModel.findOne({username : req.body.username})
+    .then(user =>{
+
+      // (async () => {
+      //   user.hasLoggedIn = true
+      //   await user.save()
+      // }) ();
+      user.hasLoggedIn = true
+      user.save().then(user => {
+          return res.status(200).json({success: true, loginBefore : user.hasLoggedIn.toString()})
+      })
+
+      //return res.status(200).json({success: true})
+    })
 })
 
 

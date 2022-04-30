@@ -5,14 +5,13 @@ import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import Paper from "@mui/material/Paper"
 import {useNavigate, useSearchParams} from "react-router-dom";
-import Change_allergy_button from './change_allergy_button';
 import TextField from '@mui/material/TextField';
  
 import {Button} from "react-bootstrap";
- 
+import axios from "axios";
  
 const Search_rec=()=>{
-  const[data, setData] = useState("");
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [searchParams] = useSearchParams();
  
@@ -32,9 +31,14 @@ const Search_rec=()=>{
       }
   }
  
-  function LogOut (){
-       localStorage.clear()
-       navigate("/")
+  async function LogOut (){
+        
+        const response = await axios.post(`http://localhost:4000/logout`,{
+        username : localStorage.getItem("username") })
+        if (response.status === 200){
+            localStorage.clear()
+            navigate("/")
+        } 
    }
   return (
   <div className='container'>
@@ -157,7 +161,7 @@ const Search_rec=()=>{
         
       </Grid>
       </Grid>
-      <div>{data}</div>
+      
   </div> 
   );
  
