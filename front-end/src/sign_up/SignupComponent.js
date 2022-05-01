@@ -17,7 +17,7 @@ export default function Signup() {
                 username: e.target.username.value,
                 password: e.target.password.value,
             }
-            const response = await axios.post(`http://localhost:4000/register`,
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND}register`,
                             userInfo
             )
             console.log(`Server response: ${JSON.stringify(response.data, null, 0)}`)

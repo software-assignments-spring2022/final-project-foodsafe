@@ -52,7 +52,7 @@ export default function TransferList() {
     const loginState=localStorage.getItem('token');
     console.log(loginState,'login state')
     if(loginState){
-      const body=await Axios.get("http://localhost:4000/allergy");
+      const body=await Axios.get(`${process.env.REACT_APP_BACKEND}allergy`);
       console.log(body.data);
       setRight(body.data);
       setLeft(not(all,body.data));
@@ -71,7 +71,7 @@ export default function TransferList() {
     const loginState=localStorage.getItem('token');
     console.log(loginState,'login state')
     if(loginState){
-      Axios.post("http://localhost:4000/allergy",{
+      Axios.post(`${process.env.REACT_APP_BACKEND}allergy`,{
         username:localStorage.getItem('username'),
         newAllergies:right
       })
