@@ -55,7 +55,7 @@ const handleFormSubmit = async formSubmitEvent => {
        console.log(allergy,stringified);
        navigate(`/search_rec?${stringified}`)
       
-       await Axios.post(`${process.env.REACT_APP_BACKEND}allergy`,{
+       await Axios.post(`${process.env.REACT_APP_BACKEND}/allergy`,{
            newAllergies:selectedAllergy
        });
    }else{

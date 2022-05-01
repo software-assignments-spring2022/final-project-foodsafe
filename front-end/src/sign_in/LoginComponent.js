@@ -28,18 +28,18 @@ export default function Login() {
                username: e.target.username.value,
                password: e.target.password.value,
            }
-           const response = await axios.post(`${process.env.REACT_APP_BACKEND}login`,
+           const response = await axios.post(`${process.env.REACT_APP_BACKEND}/login`,
                            userInfo
            )
-           await axios.post(`${process.env.REACT_APP_BACKEND}allergy/login`,{
+           await axios.post(`${process.env.REACT_APP_BACKEND}/allergy/login`,{
                            username:e.target.username.value
                }
            )
-           await axios.post(`${process.env.REACT_APP_BACKEND}list-products/login`,{
+           await axios.post(`${process.env.REACT_APP_BACKEND}/list-products/login`,{
                username:e.target.username.value
                }
            )
-           const loginResponse = await axios.post(`${process.env.REACT_APP_BACKEND}loginStatus`, {username : e.target.username.value})
+           const loginResponse = await axios.post(`${process.env.REACT_APP_BACKEND}/loginStatus`, {username : e.target.username.value})
           
            localStorage.setItem("loginBefore", loginResponse.data)
            console.log(localStorage.getItem("loginBefore"))

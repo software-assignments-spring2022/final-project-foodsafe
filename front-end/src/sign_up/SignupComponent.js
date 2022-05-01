@@ -17,7 +17,8 @@ export default function Signup() {
                 username: e.target.username.value,
                 password: e.target.password.value,
             }
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}register`,
+            console.log(process.env.REACT_APP_BACKEND)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/register`,
                             userInfo
             )
             console.log(`Server response: ${JSON.stringify(response.data, null, 0)}`)
@@ -25,6 +26,7 @@ export default function Signup() {
             navigate ("/sign_in")
         }catch (err){
             console.log("error occured")
+            console.log(process.env.REACT_APP_BACKEND)
         }
     }
     return(  
