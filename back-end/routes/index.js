@@ -18,7 +18,7 @@ const jwt = require("jsonwebtoken")
 const {jwtOptions, jwtStrategy} = require("../jwt-config.js");
 const { findOneAndUpdate } = require('../models/registeredUsers');
 const { update } = require('lodash');
-const {query, validationResult} = require('express-validator');
+const {query } = require('express-validator');
  
 let usrn='jeffery';
 const OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
@@ -103,7 +103,7 @@ router.get('/foodtype/:product', async(req,res) => {
 router.post('/register', (req, res) => {
  body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1});
  
  // Finds the validation errors in this request
    const errors = validationResult(req);
@@ -143,7 +143,7 @@ router.post('/register', (req, res) => {
 router.post('/login', function(req, res){
  body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1});
  
  // Finds the validation errors in this request
    const errors = validationResult(req);
