@@ -101,15 +101,15 @@ router.get('/foodtype/:product', async(req,res) => {
  
 //route for handling register new user
 router.post('/register', (req, res) => {
- //body('username').isLength({min: 1}),
+ body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- //body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1}),
  
  // Finds the validation errors in this request
-   //const errors = validationResult(req);
-   //if (!errors.isEmpty()) {
-     //return res.status(400).json({ errors: errors.array() });
- //}
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+     return res.status(400).json({ errors: errors.array() });
+ }
  
  
    //hash the pasword with bcrypt
@@ -141,14 +141,14 @@ router.post('/register', (req, res) => {
  
 //route for handling login
 router.post('/login', function(req, res){
- //body('username').isLength({min: 1}),
+ body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- //body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1}),
  
  // Finds the validation errors in this request
-   //const errors = validationResult(req);
-   //if (!errors.isEmpty()) {
-   //  return res.status(400).json({ errors: errors.array() });
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+     return res.status(400).json({ errors: errors.array() });
  //}
  
  const username = req.body.username
