@@ -29,27 +29,15 @@ router.get('/login',(req,res)=>{
 })
 */
 router.post('/login',(req,res)=>{
+  // body('username').isLength({min: 1}),
+  // //password and username must be at least 1 chars long
+  // body('password').isLength({ min: 1}),
 
-//   // body('username').isLength({min: 1}),
-//   // //password and username must be at least 1 chars long
-//   // body('password').isLength({ min: 1}),
-
-//   // // Finds the validation errors in this request
-//   //   const errors = validationResult(req);
-//   //   if (!errors.isEmpty()) {
-//   //     return res.status(400).json({ errors: errors.array() });
-//   // }
-
-//   body('username').isLength({min: 1}),
-//   //password and username must be at least 1 chars long
-//   body('password').isLength({ min: 1});
-
-//   // Finds the validation errors in this request
-//   const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res.status(400).json({ errors: errors.array() });
-//   }
-
+  // // Finds the validation errors in this request
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     return res.status(400).json({ errors: errors.array() });
+  // }
     username=req.body.username;
     console.log(username);
     res.json("Allergies");
@@ -66,27 +54,15 @@ router.get('/',async(req,res)=>{
 
 //expect to receive an array of number
 router.post('/',async(req,res)=>{
+  // body('username').isLength({min: 1}),
+  // //password and username must be at least 1 chars long
+  // body('newAllergies').isLength({ min: 1}),
 
-//   // body('username').isLength({min: 1}),
-//   // //password and username must be at least 1 chars long
-//   // body('newAllergies').isLength({ min: 1}),
-
-//    //Finds the validation errors in this request
-//   //   const errors = validationResult(req);
-//   //   if (!errors.isEmpty()) {
-//   //     return res.status(400).json({ errors: errors.array() });
-//   // }
-
-//   body('username').isLength({min: 1}),
-//   //password and username must be at least 1 chars long
-//   body('newAllergies').isLength({ min: 1});
-
-//    //Finds the validation errors in this request
-//   const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res.status(400).json({ errors: errors.array() });
-//   }
-
+   //Finds the validation errors in this request
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     return res.status(400).json({ errors: errors.array() });
+  // }
     const user=await userModel.findOne({'username':username});
     user.myAllergy=req.body.newAllergies;
     await user.save();
