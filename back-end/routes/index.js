@@ -1,5 +1,5 @@
 var express = require('express');
-//const {body, validationResult } = require('express-validator');
+const {body, validationResult } = require('express-validator');
 var router = express.Router();
 const ProductModel = require('../models/product');
 var products = require('../data/products');
@@ -18,7 +18,7 @@ const jwt = require("jsonwebtoken")
 const {jwtOptions, jwtStrategy} = require("../jwt-config.js");
 const { findOneAndUpdate } = require('../models/registeredUsers');
 const { update } = require('lodash');
-//const {query, validationResult} = require('express-validator');
+const {query, validationResult} = require('express-validator');
  
 let usrn='jeffery';
 const OPTIONS = ['Milk','Egg','Fish','Crustacean shellfish','Tree Nut','Peanut','Wheat','SoyBean'];
@@ -101,15 +101,15 @@ router.get('/foodtype/:product', async(req,res) => {
  
 //route for handling register new user
 router.post('/register', (req, res) => {
- //body('username').isLength({min: 1}),
+ body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- //body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1}),
  
  // Finds the validation errors in this request
-   //const errors = validationResult(req);
-   //if (!errors.isEmpty()) {
-     //return res.status(400).json({ errors: errors.array() });
- //}
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+     return res.status(400).json({ errors: errors.array() });
+ }
  
  
    //hash the pasword with bcrypt
@@ -141,15 +141,15 @@ router.post('/register', (req, res) => {
  
 //route for handling login
 router.post('/login', function(req, res){
- //body('username').isLength({min: 1}),
+ body('username').isLength({min: 1}),
 // password and username must be at least 1 chars long
- //body('password').isLength({ min: 1}),
+ body('password').isLength({ min: 1}),
  
  // Finds the validation errors in this request
-   //const errors = validationResult(req);
-   //if (!errors.isEmpty()) {
-   //  return res.status(400).json({ errors: errors.array() });
- //}
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+     return res.status(400).json({ errors: errors.array() });
+ }
  
  const username = req.body.username
  const password = req.body.password
