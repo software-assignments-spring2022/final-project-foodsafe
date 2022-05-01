@@ -3,10 +3,12 @@ import Cart from "./Components/Cart";
 import Nav from "./Components/Nav";
 import CartState  from './context/cart/CartState'; 
 
+
 const groc_list= () =>{
     
-    
+   
     return (
+
         <div className='App'>
         <CartState>
             <Nav />

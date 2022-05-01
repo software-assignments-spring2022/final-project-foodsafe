@@ -7,3 +7,4 @@ export const BAKERIES = "foodtype/bakery"
 export const CAKES = "foodtype/cake"
 export const CANS = "foodtype/can"
 export const CEREALS = "foodtype/cereal"
+
