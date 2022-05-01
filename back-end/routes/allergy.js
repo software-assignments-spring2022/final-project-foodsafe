@@ -30,7 +30,7 @@ router.get('/login',(req,res)=>{
 */
 router.post('/login',(req,res)=>{
   body('username').isLength({min: 1}),
-  password and username must be at least 1 chars long
+  //password and username must be at least 1 chars long
   body('password').isLength({ min: 1}),
 
   // Finds the validation errors in this request
@@ -55,10 +55,10 @@ router.get('/',async(req,res)=>{
 //expect to receive an array of number
 router.post('/',async(req,res)=>{
   body('username').isLength({min: 1}),
-  password and username must be at least 1 chars long
+  //password and username must be at least 1 chars long
   body('newAllergies').isLength({ min: 1}),
 
-   Finds the validation errors in this request
+   //Finds the validation errors in this request
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
