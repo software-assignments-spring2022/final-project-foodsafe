@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/software-assignments-spring2022/final-project-foodsafe/tree/master.svg?style=shield)](https://circleci.com/gh/software-assignments-spring2022/your-repo-name-here/tree/master)
+[![CircleCI](https://circleci.com/gh/software-assignments-spring2022/final-project-foodsafe/tree/master.svg?style=shield)](https://circleci.com/gh/software-assignments-spring2022/final-project-foodsafe/tree/master)
 
 # FoodSafe
 ## What and Why?
