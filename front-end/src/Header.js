@@ -36,7 +36,7 @@ export default function PrimarySearchAppBar() {
     }
 
     (async () => {
-      const data=await Axios.get("http://localhost:4000/food");
+      const data=await Axios.get(`${process.env.REACT_APP_BACKEND}/food`);
       
       if (active) {
         setOptions([...data.data]);

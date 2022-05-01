@@ -33,7 +33,7 @@ const Search_rec=()=>{
  
   async function LogOut (){
         
-        const response = await axios.post(`http://localhost:4000/logout`,{
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND}/logout`,{
         username : localStorage.getItem("username") })
         if (response.status === 200){
             localStorage.clear()
