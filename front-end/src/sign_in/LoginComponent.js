@@ -28,7 +28,7 @@ export default function Login() {
                username: e.target.username.value,
                password: e.target.password.value,
            }
-           const response = await axios.post(`http://localhost:4000/login`,
+           const response = await axios.post(`${process.env.REACT_APP_BACKEND}login`,
                            userInfo
            )
            await axios.post(`http://localhost:4000/allergy/login`,{
