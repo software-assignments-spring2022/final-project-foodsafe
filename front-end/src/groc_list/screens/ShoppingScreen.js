@@ -19,7 +19,7 @@ const ShoppingScreen = () => {
  },[]);
  
  const fetchProducts = async () => {
-   let apis = `${BASE_URL}/${LIST_PRODUCTS}?search=${searchQuery}&allergy=${allergy}`;
+   let apis = `${process.env.REACT_APP_BACKEND}/${LIST_PRODUCTS}?search=${searchQuery}&allergy=${allergy}`;
    setLoading(true); //loading on
    let response = await fetch(apis);
    response = await response.json();
