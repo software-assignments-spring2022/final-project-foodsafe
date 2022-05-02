@@ -20,12 +20,6 @@ If you would like to contribute by correcting any bugs or adding new features, f
 
 
 ## Building and Testing
-- git clone 
-- cd front-end 
-- npm install
-- cd..
-- cd back-end
-- npm install
-- cd ..
-After installing depedency in both ends. Start up two terminals and switch into front end and back end in each terminal.
-
+1. git clone
+2. switch into the front end and back end and npm install in both
+3. run the command : npm start in both directory
