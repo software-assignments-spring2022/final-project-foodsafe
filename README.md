@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/software-assignments-spring2022/final-project-foodsafe/tree/master.svg?style=shield)](https://circleci.com/gh/software-assignments-spring2022/final-project-foodsafe/tree/master)
-- [go see our deployed app!](http://161.35.117.207/3000)
+- [go see our deployed app!](http://161.35.117.207:3000)
 # FoodSafe
 ## What and Why?
 FoodSafe is a software app that will allow its user to select which allergies they may have, such as: milk, eggs, peanuts, soy, wheat, tree nuts, fish, shellfish, sesame, etc. Then the user will be able to search for a food product and the app will then suggest food products that are allergy free and safe for the user to eat. The team is aiming for the app to initially ask users what they are allergic to, then to be directed to a page where users can search for food products that are allergy free and the software will suggest them. Later on, our goals are to add more allergies than just the common ones, and allow the user to enter a full grocery list that the app will be able to process. This software will help those with allergies that struggle to find foods they can eat and spend hours in grocery stores looking at the ingredients on the back of products.
