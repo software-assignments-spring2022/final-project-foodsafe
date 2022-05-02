@@ -20,4 +20,12 @@ If you would like to contribute by correcting any bugs or adding new features, f
 
 
 ## Building and Testing
-TBD
+- git clone 
+- cd front-end 
+- npm install
+- cd..
+- cd back-end
+- npm install
+- cd ..
+After installing depedency in both ends. Start up two terminals and switch into front end and back end in each terminal.
+
